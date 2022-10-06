@@ -24,7 +24,10 @@ export default {
   computed: {
     answers() {
       var answers = JSON.parse(JSON.stringify(this.incorrectAnswers));
-      answers.push(this.correctAnswer);
+      // Pegando a minha posição
+      let positionRandom = Math.round(Math.random() * answers.length);
+
+      answers.splice(positionRandom, 0, this.correctAnswer);
       return answers;
     },
   },
