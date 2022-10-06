@@ -1,13 +1,19 @@
 <template>
   <div>
-    <h1 v-html="question"></h1>
+    <template v-if="question">
+      <h1 v-html="question"></h1>
 
-    <input type="radio" name="options" value="True" />
-    <label for="">True</label> <br />
-    <input type="radio" name="options" value="False" />
-    <label for="">False</label><br />
-
-    <button class="send" type="button">Send</button>
+      <template v-for="(answer, index) in answers" :key="index">
+        <input
+          type="radio"
+          name="options"
+          :value="answer"
+          v-model="chose_answer"
+        />
+        <label v-html="answer"></label> <br />
+      </template>
+      <button @click="submitAnswer" class="send" type="button">Send</button>
+    </template>
   </div>
 </template>
 
@@ -19,6 +25,7 @@ export default {
       question: undefined,
       incorrectAnswers: undefined,
       correctAnswer: undefined,
+      chose_answer: undefined,
     };
   },
   computed: {
@@ -29,6 +36,19 @@ export default {
 
       answers.splice(positionRandom, 0, this.correctAnswer);
       return answers;
+    },
+  },
+  methods: {
+    submitAnswer() {
+      if (!this.chose_answer) {
+        alert("Escolha uma das opções");
+      } else {
+        if (this.chose_answer == this.correctAnswer) {
+          alert("You got it right!");
+        } else {
+          alert("You got it wrong!");
+        }
+      }
     },
   },
   created() {
