@@ -13,6 +13,10 @@
         <label v-html="answer"></label> <br />
       </template>
       <button @click="submitAnswer" class="send" type="button">Send</button>
+
+      <section id="result">
+        <button class="send" type="button">Next Question</button>
+      </section>
     </template>
   </div>
 </template>
