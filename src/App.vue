@@ -15,6 +15,9 @@
       <button @click="submitAnswer" class="send" type="button">Send</button>
 
       <section id="result">
+        <h4>
+          &#9989; Parabéns, a resposta "{{ this.correctAnswer }}" está correta.
+        </h4>
         <button class="send" type="button">Next Question</button>
       </section>
     </template>
