@@ -18,7 +18,7 @@
         <h4>
           &#9989; Parabéns, a resposta "{{ this.correctAnswer }}" está correta.
         </h4>
-        <button class="send" type="button">Next Question</button>
+        <button class="send" type="button">Next Question s</button>
       </section>
     </template>
   </div>
