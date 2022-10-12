@@ -1,5 +1,7 @@
 <template>
   <div>
+    <ScoreBoard />
+
     <template v-if="question">
       <h1 v-html="question"></h1>
 
@@ -23,38 +25,38 @@
         Send
       </button>
 
-      <template>
-        <section v-if="this.answerSubmitted" class="result">
-          <h4
-            v-if="this.chosenAnswer == this.correctAnswer"
-            v-html="
-              '&#9989; Congratulations, the answer is ' +
-              this.correctAnswer +
-              'correct.'
-            "
-          ></h4>
+      <section v-if="this.answerSubmitted" class="result">
+        <h4
+          v-if="this.chosenAnswer == this.correctAnswer"
+          v-html="
+            '&#9989; Congratulations, the answer is ' +
+            this.correctAnswer +
+            'correct.'
+          "
+        ></h4>
 
-          <h4
-            v-else
-            v-html="
-              '&#10060; I´m sorry, you picked the wrong answer. The correct is' +
-              this.correctAnswer +
-              '.'
-            "
-          ></h4>
+        <h4
+          v-else
+          v-html="
+            '&#10060; I´m sorry, you picked the wrong answer. The correct is' +
+            this.correctAnswer +
+            '.'
+          "
+        ></h4>
 
-          <button @click="this.getNewQuestion" class="send" type="button">
-            Next Question
-          </button>
-        </section>
-      </template>
+        <button @click="this.getNewQuestion" class="send" type="button">
+          Next Question
+        </button>
+      </section>
     </template>
   </div>
 </template>
 
 <script>
+import ScoreBoard from "@/components/ScoreBoard.vue";
 export default {
   name: "App",
+  components: { ScoreBoard },
   data() {
     return {
       question: undefined,
