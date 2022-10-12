@@ -81,7 +81,7 @@ export default {
   methods: {
     submitAnswer() {
       if (!this.chosenAnswer) {
-        alert("Pick one of the options");
+        console.log("Pick one of the options");
       } else {
         if (this.chosenAnswer == this.correctAnswer) {
           this.answerSubmitted = true;
