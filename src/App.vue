@@ -18,13 +18,16 @@
       </button>
 
       <section class="result">
-        <h4>
-          &#9989; Parabéns, a resposta "{{ this.correctAnswer }}" está correta.
+        <h4 v-if="this.chose_answer == this.correct_answer">
+          &#9989; Congratulations, the answer "{{ this.correctAnswer }}" is
+          correct.
         </h4>
-        <h4>
+
+        <h4 v-else>
           &#10060; I'm sorry, you picked the wrong answer. The correct is
           {{ this.correctAnswer }}
         </h4>
+
         <button class="send" type="button">Next Question</button>
       </section>
     </template>
