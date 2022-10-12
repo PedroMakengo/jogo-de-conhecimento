@@ -151,14 +151,22 @@ body {
     padding-bottom: 1rem;
 
     .question-item {
-      background: red !important;
-
       width: 30%;
       height: 3rem;
 
       display: flex;
       align-items: center;
       justify-content: center;
+
+      color: white;
+    }
+
+    .play {
+      background: #006aff !important;
+    }
+
+    .comput {
+      background: #be0b0b !important;
     }
   }
 

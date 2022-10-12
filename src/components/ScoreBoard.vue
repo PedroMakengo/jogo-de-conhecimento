@@ -1,13 +1,11 @@
 <template>
   <section class="score">
     <div class="play question-item">
-      Player
-      <strong> {{ this.winCount }} </strong>
+      <p> Player <strong> {{ this.winCount }} </strong></p>
     </div>
     <span> x </span>
     <div class="comput question-item">
-      <strong> {{ this.loseCount }} </strong>
-      Computer
+      <p>Computer <strong> {{ this.loseCount }} </strong></p>
     </div>
   </section>
 </template>
