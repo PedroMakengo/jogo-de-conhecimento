@@ -139,6 +139,30 @@ body {
     color: white;
   }
 
+  .result {
+    color: white;
+  }
+
+  .score {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+
+    .question-item {
+      background: red !important;
+
+      width: 30%;
+      height: 3rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
 }
 
 input[type="radio"] {

@@ -1,10 +1,14 @@
 <template>
   <section class="score">
-    Player
-    <span>{{ this.winCount }}</span>
-    x
-    <span>{{ this.loseCount }}</span>
-    Computer
+    <div class="play question-item">
+      Player
+      <strong> {{ this.winCount }} </strong>
+    </div>
+    <span> x </span>
+    <div class="comput question-item">
+      <strong> {{ this.loseCount }} </strong>
+      Computer
+    </div>
   </section>
 </template>
 
@@ -22,6 +26,10 @@ export default {
   border-bottom: 1px solid black;
   padding: 24px;
   font-size: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   span {
     padding: 8px;
