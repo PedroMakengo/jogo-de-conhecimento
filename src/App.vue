@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ScoreBoard :winCount="winCount" :loseCount="loseCount" />
+    <ScoreBoard :winCount="this.winCount" :loseCount="this.loseCount" />
 
     <template v-if="question">
       <h1 v-html="question"></h1>
