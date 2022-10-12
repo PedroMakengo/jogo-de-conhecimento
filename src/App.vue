@@ -6,43 +6,28 @@
       <h1 v-html="question"></h1>
 
       <template v-for="(answer, index) in answers" :key="index">
-        <input
-          :disabled="answerSubmitted"
-          type="radio"
-          name="options"
-          :value="answer"
-          v-model="chosenAnswer"
-        />
-        <label v-html="this.answer"></label> <br />
+        <div class="question">
+          <label v-html="answer"></label>
+          <input :disabled="answerSubmitted" type="radio" name="options" :value="answer" v-model="chosenAnswer" />
+        </div>
       </template>
 
-      <button
-        v-if="!this.answerSubmitted"
-        @click="this.submitAnswer"
-        class="send"
-        type="button"
-      >
+      <button v-if="!this.answerSubmitted" @click="this.submitAnswer" class="send" type="button">
         Send
       </button>
 
       <section v-if="this.answerSubmitted" class="result">
-        <h4
-          v-if="this.chosenAnswer == this.correctAnswer"
-          v-html="
-            '&#9989; Congratulations, the answer is ' +
-            this.correctAnswer +
-            'correct.'
-          "
-        ></h4>
+        <h4 v-if="this.chosenAnswer == this.correctAnswer" v-html="
+                '&#9989; Congratulations, the answer is ' +
+                this.correctAnswer +
+                'correct.'
+              "></h4>
 
-        <h4
-          v-else
-          v-html="
-            '&#10060; I´m sorry, you picked the wrong answer. The correct is' +
-            this.correctAnswer +
-            '.'
-          "
-        ></h4>
+        <h4 v-else v-html="
+                 '&#10060; I´m sorry, you picked the wrong answer. The correct is' +
+                 this.correctAnswer +
+                 '.'
+               "></h4>
 
         <button @click="this.getNewQuestion" class="send" type="button">
           Next Question
@@ -87,6 +72,7 @@ export default {
           this.answerSubmitted = true;
           this.winCount++;
         } else {
+          this.answerSubmitted = true;
           this.loseCount++;
         }
       }
@@ -113,29 +99,63 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(#00000092, #000000ca), url("@/assets/palavra-jogo.webp");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 100vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 60px auto;
+  margin: auto;
 
-  max-width: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 
-  input[type="radio"] {
-    margin: 12px 4px;
+  max-width: 50%;
+
+  h1 {
+    border-bottom: 1px solid white;
+    padding-block: 1rem;
+    color: white;
   }
 
-  button.send {
-    margin-top: 12px;
-    height: 40px;
-    min-width: 120px;
-    padding: 0 16px;
-    color: #fff;
-    background: #1867c0;
-    border: 1px solid #1867c0;
-    cursor: pointer;
+  .question {
+    margin-top: 1rem;
+    color: white;
   }
+
+}
+
+input[type="radio"] {
+  margin: 12px 4px;
+}
+
+button.send {
+  margin-top: 12px;
+  height: 40px;
+  min-width: 120px;
+  padding: 0 16px;
+  color: #fff;
+  background: #cdcd07;
+  border: 1px solid #cdcd07;
+  cursor: pointer;
+
+  border-radius: 0.2rem;
+  color: black;
 }
 </style>
