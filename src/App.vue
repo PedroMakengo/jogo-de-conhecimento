@@ -5,18 +5,25 @@
 
       <template v-for="(answer, index) in answers" :key="index">
         <input
+          :disabled="answerSubmitted"
           type="radio"
           name="options"
           :value="answer"
           v-model="chose_answer"
         />
-        <label v-html="answer"></label> <br />
+        <label v-html="this.answer"></label> <br />
       </template>
-      <button @click="submitAnswer" class="send" type="button">Send</button>
+      <button @click="this.submitAnswer" class="send" type="button">
+        Send
+      </button>
 
-      <section id="result">
+      <section class="result">
         <h4>
           &#9989; Parabéns, a resposta "{{ this.correctAnswer }}" está correta.
+        </h4>
+        <h4>
+          &#10060; I'm sorry, you picked the wrong answer. The correct is
+          {{ this.correctAnswer }}
         </h4>
         <button class="send" type="button">Next Question</button>
       </section>
@@ -33,6 +40,7 @@ export default {
       incorrectAnswers: undefined,
       correctAnswer: undefined,
       chose_answer: undefined,
+      answerSubmitted: false,
     };
   },
   computed: {
@@ -48,12 +56,13 @@ export default {
   methods: {
     submitAnswer() {
       if (!this.chose_answer) {
-        alert("Escolha uma das opções");
+        alert("Pick one of the options");
       } else {
         if (this.chose_answer == this.correctAnswer) {
-          alert("You got it right!");
+          this.answerSubmitted = true;
+          console.log("You got it right!");
         } else {
-          alert("You got it wrong!");
+          console.log("You got it wrong!");
         }
       }
     },
