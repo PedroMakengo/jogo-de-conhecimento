@@ -9,16 +9,22 @@
           type="radio"
           name="options"
           :value="answer"
-          v-model="chose_answer"
+          v-model="chosenAnswer"
         />
         <label v-html="this.answer"></label> <br />
       </template>
-      <button @click="this.submitAnswer" class="send" type="button">
+
+      <button
+        v-if="!this.answerSubmitted"
+        @click="this.submitAnswer"
+        class="send"
+        type="button"
+      >
         Send
       </button>
 
-      <section class="result">
-        <h4 v-if="this.chose_answer == this.correct_answer">
+      <section v-if="this.answerSubmitted" class="result">
+        <h4 v-if="this.chosenAnswer == this.correctAnswer">
           &#9989; Congratulations, the answer "{{ this.correctAnswer }}" is
           correct.
         </h4>
@@ -42,7 +48,7 @@ export default {
       question: undefined,
       incorrectAnswers: undefined,
       correctAnswer: undefined,
-      chose_answer: undefined,
+      chosenAnswer: undefined,
       answerSubmitted: false,
     };
   },
@@ -58,10 +64,10 @@ export default {
   },
   methods: {
     submitAnswer() {
-      if (!this.chose_answer) {
+      if (!this.chosenAnswer) {
         alert("Pick one of the options");
       } else {
-        if (this.chose_answer == this.correctAnswer) {
+        if (this.chosenAnswer == this.correctAnswer) {
           this.answerSubmitted = true;
           console.log("You got it right!");
         } else {
